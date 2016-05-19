@@ -1,5 +1,5 @@
 {
-  "name": "angular-bootstrap-calendar",
+  "name": "@dankapusta/angular-bootstrap-calendar",
   "version": "0.20.0",
   "license": "MIT",
   "repository": "https://github.com/mattlewis92/angular-bootstrap-calendar.git",
@@ -76,6 +76,13 @@
     },
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
+    },
+    "pre-git": {
+      "commit-msg": [],
+      "pre-commit": [],
+      "pre-push": [],
+      "post-commit": [],
+      "post-merge": []
     }
   }
 }
