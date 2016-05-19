@@ -1,5 +1,33 @@
 <div class="cal-slide-box" uib-collapse="vm.isCollapsed" mwl-collapse-fallback="vm.isCollapsed">
   <div class="cal-slide-content cal-event-list">
+
+    <table class="table table-bordered table-condensed" style="margin-bottom: 0px;">
+
+      <tr>
+        <th class="table-border-dark" style="background-color: #777;">Role</th>
+        <th class="table-border-dark" style="background-color: #777;">Name</th>
+        <th class="table-border-dark" style="background-color: #777;">Cell Phone</th>
+        <th class="table-border-dark" style="background-color: #777;">Start</th>
+        <th class="table-border-dark" style="background-color: #777;">End</th>
+        <th class="table-border-dark" style="background-color: #777;">Edit</th>
+      </tr>
+
+      <tr ng-repeat="event in vm.events | orderBy:'startsAt' track by event.$id">
+        <td class="table-border-dark">{{event.person.role}} <i class="fa fa-circle dot-{{event.type}}"></i></td>
+        <td class="table-border-dark">{{event.person.name}}</td>
+        <td class="table-border-dark">{{event.person.cellPhone}}</td>
+        <td class="table-border-dark"><span ng-bind="event.startsAt | calendarDate:(isMonthView ? 'time' : 'datetime'):true"></span></td>
+        <td class="table-border-dark"><span ng-bind="event.endsAt | calendarDate:(isMonthView ? 'time' : 'datetime'):true"></span></td>
+        <td class="table-border-dark">
+          <a href="#" class="event-item" ng-click="vm.onEventClick({calendarEvent: event})">
+            <i class="fa fa-pencil-square" aria-hidden="true"></i>
+          </a>
+        </td>
+      </tr>
+
+    </table>
+
+    <!--
     <ul class="unstyled list-unstyled">
 
       <li
@@ -14,7 +42,8 @@
           class="event-item"
           ng-click="vm.onEventClick({calendarEvent: event})">
           <span ng-bind-html="vm.$sce.trustAsHtml(event.title)"></span>
-          (<span ng-bind="event.startsAt | calendarDate:(isMonthView ? 'time' : 'datetime'):true"></span><span ng-if="vm.calendarConfig.displayEventEndTimes && event.endsAt"> - <span ng-bind="event.endsAt | calendarDate:(isMonthView ? 'time' : 'datetime'):true"></span></span>)
+          (From <span ng-bind="event.startsAt | calendarDate:(isMonthView ? 'time' : 'datetime'):true"></span>
+          to <span ng-bind="event.endsAt | calendarDate:(isMonthView ? 'time' : 'datetime'):true"></span>)
         </a>
 
         <a
@@ -35,5 +64,7 @@
       </li>
 
     </ul>
+    -->
+
   </div>
 </div>
