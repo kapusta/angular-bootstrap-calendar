@@ -4,25 +4,31 @@
     <table class="table table-bordered table-condensed" style="margin-bottom: 0px;">
 
       <tr>
-        <th class="table-border-dark" style="background-color: #777;">Role</th>
+        <th class="table-border-dark" style="background-color: #777; width: 100px; white-space: nowrap;">Role</th>
         <th class="table-border-dark" style="background-color: #777;">Name</th>
         <th class="table-border-dark" style="background-color: #777;">Cell Phone</th>
+        <th class="table-border-dark" style="background-color: #777;">Home Phone</th>
         <th class="table-border-dark" style="background-color: #777;">Start</th>
         <th class="table-border-dark" style="background-color: #777;">End</th>
+        <!-- TODO: add this back in when preview mode can be communicated to calendar directive
         <th class="table-border-dark" style="background-color: #777;">Edit</th>
+        -->
       </tr>
 
       <tr ng-repeat="event in vm.events | orderBy:'startsAt' track by event.$id">
-        <td class="table-border-dark">{{event.person.role}} <i class="fa fa-circle dot-{{event.type}}"></i></td>
-        <td class="table-border-dark">{{event.person.name}}</td>
+        <td class="table-border-dark">{{event.person.role.capitalize()}}</td>
+        <td class="table-border-dark"><i class="fa fa-circle dot-{{event.type}}"></i> {{event.person.name}}</td>
         <td class="table-border-dark">{{event.person.cellPhone}}</td>
+        <td class="table-border-dark">{{event.person.homePhone}}</td>
         <td class="table-border-dark"><span ng-bind="event.startsAt | calendarDate:(isMonthView ? 'time' : 'datetime'):true"></span></td>
         <td class="table-border-dark"><span ng-bind="event.endsAt | calendarDate:(isMonthView ? 'time' : 'datetime'):true"></span></td>
-        <td class="table-border-dark">
+        <!-- TODO: add this back in when preview mode can be communicated to calendar directive
+        <td class="table-border-dark" ng-if="vm.onEventClick">
           <a href="#" class="event-item" ng-click="vm.onEventClick({calendarEvent: event})">
             <i class="fa fa-pencil-square" aria-hidden="true"></i>
           </a>
         </td>
+        -->
       </tr>
 
     </table>
