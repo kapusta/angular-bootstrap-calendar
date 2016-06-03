@@ -1,6 +1,6 @@
 {
   "name": "@dankapusta/angular-bootstrap-calendar",
-  "version": "0.20.1",
+  "version": "0.20.2",
   "license": "MIT",
   "repository": "https://github.com/mattlewis92/angular-bootstrap-calendar.git",
   "peerDependencies": {
